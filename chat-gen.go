@@ -1225,6 +1225,16 @@ type Image struct {
 	NullFields []string `json:"-"`
 }
 
+func ImageNew(altText string, imageURL string, onClick *OnClick, forceSendFields []string, nullFields []string) *Image {
+	return &Image{
+		AltText:         altText,
+		ImageUrl:        imageURL,
+		OnClick:         onClick,
+		ForceSendFields: forceSendFields,
+		NullFields:      nullFields,
+	}
+}
+
 func (s *Image) MarshalJSON() ([]byte, error) {
 	type NoMethod Image
 	raw := NoMethod(*s)
